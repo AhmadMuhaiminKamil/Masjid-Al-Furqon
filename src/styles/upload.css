@@ -1,0 +1,182 @@
+/* ============================================================
+   IMAGE UPLOAD — dropzone + preview
+   ============================================================ */
+
+.iq-up__zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-height: 152px;
+  padding: 22px 16px;
+  border: 1.5px dashed #cbd7d0;
+  border-radius: 12px;
+  background: #fafcfb;
+  cursor: pointer;
+  text-align: center;
+  transition: border-color 0.2s ease, background 0.2s ease,
+    transform 0.16s ease;
+  outline: none;
+  user-select: none;
+}
+.iq-up__zone:hover,
+.iq-up__zone:focus-visible {
+  border-color: #0f5132;
+  background: #f4f9f6;
+}
+.iq-up__zone.is-drag {
+  border-color: #0f5132;
+  border-style: solid;
+  background: #e9f4ed;
+  transform: scale(1.01);
+}
+.iq-up__zone.is-busy {
+  cursor: wait;
+  border-color: #0f5132;
+  background: #f4f9f6;
+}
+
+.iq-up__ico {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: #e7f1ea;
+  color: #0f5132;
+  margin-bottom: 4px;
+}
+
+.iq-up__zone strong {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #16231c;
+}
+.iq-up__zone span {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.79rem;
+  color: #8a978f;
+}
+.iq-up__zone em {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.73rem;
+  font-style: normal;
+  color: #a3b0a8;
+  margin-top: 5px;
+}
+
+/* ---------- preview ---------- */
+.iq-up__preview {
+  position: relative;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e4e9e5;
+  background: #f2f5f3;
+}
+.iq-up__preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.iq-up__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  background: linear-gradient(
+    to top,
+    rgba(6, 20, 14, 0.72) 0%,
+    rgba(6, 20, 14, 0.15) 45%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.22s ease;
+}
+.iq-up__preview:hover .iq-up__overlay,
+.iq-up__preview:focus-within .iq-up__overlay {
+  opacity: 1;
+}
+
+.iq-up__ovbtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #16231c;
+  background: #fff;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.16s ease, background 0.16s ease;
+}
+.iq-up__ovbtn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  background: #f4f9f6;
+}
+.iq-up__ovbtn--del {
+  background: #fdeaea;
+  color: #b91c1c;
+}
+.iq-up__ovbtn--del:hover:not(:disabled) {
+  background: #fbd5d5;
+}
+.iq-up__ovbtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.iq-up__loading {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(6, 20, 14, 0.55);
+  color: #fff;
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
+
+/* ---------- error ---------- */
+.iq-up__err {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.79rem;
+  color: #b91c1c;
+  margin-top: 2px;
+}
+
+/* ---------- spinner ---------- */
+.iq-spin {
+  animation: iqSpin 0.85s linear infinite;
+}
+@keyframes iqSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------- mobile: overlay selalu terlihat ---------- */
+@media (hover: none) {
+  .iq-up__overlay {
+    opacity: 1;
+    background: linear-gradient(
+      to top,
+      rgba(6, 20, 14, 0.7) 0%,
+      transparent 45%
+    );
+  }
+}

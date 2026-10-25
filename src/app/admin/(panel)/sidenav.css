@@ -1,0 +1,95 @@
+/* ============================================================
+   SIDEBAR NAV — indikator geser (sliding pill)
+   ============================================================ */
+
+.iq-sidenav {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+}
+
+/* pill yang bergeser ke item aktif */
+.iq-sidenav__indicator {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  top: 0;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.12),
+    0 4px 14px -4px rgba(0, 0, 0, 0.35);
+  transition:
+    transform 0.34s cubic-bezier(0.22, 0.75, 0.28, 1),
+    height 0.34s cubic-bezier(0.22, 0.75, 0.28, 1);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* garis emas di kiri pill */
+.iq-sidenav__indicator::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 20px;
+  border-radius: 0 3px 3px 0;
+  background: linear-gradient(180deg, #e8c95a, #c9a227);
+}
+
+.iq-sidenav__link {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.68);
+  text-decoration: none;
+  transition:
+    color 0.24s ease,
+    transform 0.2s ease,
+    padding-left 0.24s ease;
+}
+.iq-sidenav__link:hover {
+  color: #fff;
+  padding-left: 15px;
+}
+.iq-sidenav__link:hover .iq-sidenav__icon {
+  transform: scale(1.08);
+}
+
+.iq-sidenav__link.is-active {
+  color: #fff;
+  font-weight: 600;
+  padding-left: 15px;
+}
+.iq-sidenav__link.is-active .iq-sidenav__icon {
+  color: #e8c95a;
+}
+
+.iq-sidenav__icon {
+  flex: none;
+  opacity: 0.9;
+  transition: transform 0.24s cubic-bezier(0.22, 0.75, 0.28, 1),
+    color 0.24s ease;
+}
+
+/* ---------- reduce motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .iq-sidenav__indicator,
+  .iq-sidenav__link,
+  .iq-sidenav__icon {
+    transition: none;
+  }
+}

@@ -1,0 +1,190 @@
+/* ============================================================
+   ADMIN MOBILE NAV — burger + drawer (khusus < 768px)
+   ============================================================ */
+
+.iq-adm-mobilenav {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .iq-adm-mobilenav {
+    display: block;
+    flex: none;
+  }
+
+  .iq-adm-burger {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    background: #0f5132;
+    border: 0;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  .iq-adm-burger:active {
+    background: #0b3d2c;
+  }
+}
+
+/* ---------- drawer ---------- */
+.iq-adm-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+}
+.iq-adm-drawer__scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 20, 14, 0.6);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+}
+.iq-adm-drawer__panel {
+  position: relative;
+  width: min(300px, 84vw);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #0f5132;
+  box-shadow: 12px 0 40px rgba(0, 0, 0, 0.4);
+  animation: iqDrawerIn 0.26s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+@keyframes iqDrawerIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.iq-adm-drawer__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 20px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.iq-adm-drawer__head strong {
+  display: block;
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.3;
+}
+.iq-adm-drawer__head span {
+  display: block;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.63rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #e8c95a;
+  margin-top: 3px;
+}
+.iq-adm-drawer__head button {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.12);
+  border: 0;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  flex: none;
+}
+
+.iq-adm-drawer__links {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.iq-adm-drawer__links a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 12px 14px;
+  border-radius: 9px;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.72);
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease, padding-left 0.24s ease;
+}
+.iq-adm-drawer__links a:hover {
+  background: rgba(255, 255, 255, 0.07);
+  padding-left: 18px;
+}
+.iq-adm-drawer__links a:active {
+  background: rgba(255, 255, 255, 0.12);
+}
+.iq-adm-drawer__links a.is-active {
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+  font-weight: 600;
+  padding-left: 18px;
+  box-shadow: inset 3px 0 0 #e8c95a;
+  animation: iqNavPop 0.32s cubic-bezier(0.22, 0.75, 0.28, 1);
+}
+.iq-adm-drawer__links a.is-active svg {
+  color: #e8c95a;
+}
+@keyframes iqNavPop {
+  0% {
+    transform: translateX(-6px);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.iq-adm-drawer__links a svg {
+  flex: none;
+  opacity: 0.85;
+}
+
+.iq-adm-drawer__foot {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.iq-adm-drawer__foot a,
+.iq-adm-drawer__foot button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 11px 14px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  cursor: pointer;
+  text-align: left;
+}
+.iq-adm-drawer__foot button:hover,
+.iq-adm-drawer__foot a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+.iq-adm-drawer__foot form {
+  margin: 0;
+}

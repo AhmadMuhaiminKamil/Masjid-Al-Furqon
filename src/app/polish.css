@@ -1,0 +1,128 @@
+/* ============================================================
+   POLISH — kontras & kenyamanan (hasil review visual)
+   ============================================================ */
+
+/* 1. Overlay hero lebih tebal — teks & navbar terbaca jelas */
+.iq-hero__overlay {
+  background:
+    linear-gradient(180deg,
+      rgba(4, 17, 12, 0.72) 0%,
+      rgba(4, 17, 12, 0.50) 28%,
+      rgba(4, 17, 12, 0.58) 62%,
+      rgba(4, 17, 12, 0.80) 100%),
+    radial-gradient(ellipse 75% 60% at 50% 50%, rgba(3, 14, 9, 0.48), transparent 75%),
+    linear-gradient(90deg,
+      rgba(4, 17, 12, 0.34) 0%,
+      transparent 40%,
+      transparent 60%,
+      rgba(4, 17, 12, 0.38) 100%) !important;
+}
+
+/* 2. Navbar lebih solid */
+.iq-nav__pill {
+  background: linear-gradient(135deg,
+    rgba(13, 46, 34, 0.80) 0%,
+    rgba(9, 34, 25, 0.74) 50%,
+    rgba(14, 50, 37, 0.78) 100%) !important;
+  border-color: rgba(126, 214, 168, 0.26) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
+  backdrop-filter: blur(28px) saturate(180%) !important;
+}
+
+.iq-nav__link {
+  color: rgba(255, 255, 255, 0.96) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.96) !important;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.85), 0 1px 4px rgba(0, 0, 0, 0.6) !important;
+}
+.iq-nav__link:hover,
+.iq-nav__link.is-active {
+  color: #e8c95a !important;
+  -webkit-text-fill-color: #e8c95a !important;
+}
+.iq-nav__link.is-active {
+  font-weight: 700;
+}
+
+.iq-nav__brand {
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.9), 0 1px 4px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* 3. Teks hero lebih tegas */
+.iq-hero__title {
+  text-shadow:
+    0 5px 36px rgba(0, 0, 0, 0.9),
+    0 3px 12px rgba(0, 0, 0, 0.8),
+    0 1px 4px rgba(0, 0, 0, 0.6) !important;
+}
+.iq-hero__sub {
+  text-shadow: 0 3px 20px rgba(0, 0, 0, 0.85), 0 1px 5px rgba(0, 0, 0, 0.7) !important;
+}
+.iq-hero__desc {
+  color: rgba(255, 255, 255, 0.92) !important;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9), 0 1px 4px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* 4. Prayer bar lebih solid + rapatkan gap */
+.iq-prayer__inner {
+  background: rgba(4, 20, 14, 0.88) !important;
+  border-color: rgba(255, 255, 255, 0.18) !important;
+  gap: 20px !important;
+}
+.iq-prayer__head {
+  min-width: 190px;
+}
+
+/* 5. Ghost button lebih tegas */
+.iq-btn--ghost {
+  background: rgba(9, 34, 25, 0.45) !important;
+  border-color: rgba(255, 255, 255, 0.55) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
+}
+.iq-btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.20) !important;
+  border-color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* 6. Sembunyikan badge Next.js dev */
+[data-nextjs-toast],
+#next-logo,
+nextjs-portal,
+[data-next-badge-root] {
+  display: none !important;
+}
+
+/* 7. Focus ring aksesibilitas */
+.iq-nav__link:focus-visible,
+.iq-btn:focus-visible,
+.iq-service:focus-visible,
+.iq-filter button:focus-visible {
+  outline: 2px solid #e8c95a;
+  outline-offset: 3px;
+}
+
+/* 8. Scrollbar halus */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(11, 61, 44, 0.35) transparent;
+}
+html::-webkit-scrollbar {
+  width: 10px;
+}
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+html::-webkit-scrollbar-thumb {
+  background: rgba(11, 61, 44, 0.35);
+  border-radius: 5px;
+}
+html::-webkit-scrollbar-thumb:hover {
+  background: rgba(11, 61, 44, 0.55);
+}
+
+/* 9. Cegah horizontal scroll */
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}

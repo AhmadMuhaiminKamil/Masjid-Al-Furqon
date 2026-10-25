@@ -1,0 +1,355 @@
+/* ============================================================
+   FINANCE MODULE — summary cards, filter, tabel, export
+   ============================================================ */
+
+/* ---------- head stat ---------- */
+.iq-fin-headstat {
+  text-align: right;
+  padding: 12px 20px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid #e8ece9;
+  box-shadow: 0 1px 3px rgba(16, 40, 30, 0.05);
+}
+.iq-fin-headstat span {
+  display: block;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #8a978f;
+  margin-bottom: 3px;
+}
+.iq-fin-headstat strong {
+  display: block;
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: 1.42rem;
+  font-weight: 700;
+  color: #0b3d2c;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+.iq-fin-headstat em {
+  display: block;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.74rem;
+  font-style: normal;
+  color: #8a978f;
+  margin-top: 2px;
+}
+
+/* ---------- summary cards ---------- */
+.iq-fin-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 18px;
+}
+.iq-fin-card {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 16px 18px;
+  border-radius: 13px;
+  background: #fff;
+  border: 1px solid #e8ece9;
+  box-shadow: 0 1px 3px rgba(16, 40, 30, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.iq-fin-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px -10px rgba(16, 40, 30, 0.22);
+}
+.iq-fin-card__ico {
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+.iq-fin-card__label {
+  display: block;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8a978f;
+  margin-bottom: 3px;
+}
+.iq-fin-card strong {
+  display: block;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 1.06rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.iq-fin-card--in .iq-fin-card__ico {
+  background: #e7f5ec;
+  color: #16653f;
+}
+.iq-fin-card--in strong {
+  color: #16653f;
+}
+
+.iq-fin-card--out .iq-fin-card__ico {
+  background: #fdeaea;
+  color: #b91c1c;
+}
+.iq-fin-card--out strong {
+  color: #b91c1c;
+}
+
+.iq-fin-card--bal .iq-fin-card__ico {
+  background: #e8f1fd;
+  color: #1d4f91;
+}
+.iq-fin-card--bal strong {
+  color: #1d4f91;
+}
+
+.iq-fin-card--neg .iq-fin-card__ico {
+  background: #fdeaea;
+  color: #b91c1c;
+}
+.iq-fin-card--neg strong {
+  color: #b91c1c;
+}
+
+.iq-fin-card--all {
+  background: linear-gradient(135deg, #0f5132, #0b3d2c);
+  border-color: #0f5132;
+}
+.iq-fin-card--all .iq-fin-card__ico {
+  background: rgba(255, 255, 255, 0.14);
+  color: #e8c95a;
+}
+.iq-fin-card--all .iq-fin-card__label {
+  color: rgba(255, 255, 255, 0.6);
+}
+.iq-fin-card--all strong {
+  color: #fff;
+}
+
+/* ---------- toolbar ---------- */
+.iq-fin-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.iq-fin-presets {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  background: #f2f5f3;
+  border-radius: 10px;
+}
+.iq-fin-chip {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.79rem;
+  font-weight: 600;
+  padding: 7px 13px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: #6b7a72;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+.iq-fin-chip:hover {
+  color: #0b3d2c;
+}
+.iq-fin-chip.is-active {
+  background: #fff;
+  color: #0f5132;
+  box-shadow: 0 1px 3px rgba(16, 40, 30, 0.12);
+}
+
+.iq-fin-dates {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.8rem;
+  color: #8a978f;
+}
+.iq-fin-dates input {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.82rem;
+  padding: 8px 10px;
+  border: 1px solid #e2e6e3;
+  border-radius: 8px;
+  background: #fff;
+  color: #2c3833;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.iq-fin-dates input:focus {
+  border-color: #0f5132;
+  box-shadow: 0 0 0 3px rgba(15, 81, 50, 0.09);
+}
+
+.iq-fin-select {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.82rem;
+  padding: 9px 12px;
+  border: 1px solid #e2e6e3;
+  border-radius: 8px;
+  background: #fff;
+  color: #2c3833;
+  outline: none;
+  cursor: pointer;
+}
+.iq-fin-select:focus {
+  border-color: #0f5132;
+}
+
+.iq-fin-actions {
+  display: inline-flex;
+  gap: 8px;
+  margin-left: auto;
+}
+
+/* ---------- tabel ---------- */
+.iq-fin-amount {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  justify-content: flex-end;
+}
+.iq-fin-total td {
+  background: #f8faf8;
+  border-top: 2px solid #e2e6e3;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.84rem;
+  font-weight: 600;
+  padding: 14px 18px;
+  white-space: nowrap;
+}
+.iq-fin-total td:first-child {
+  color: #6b7a72;
+  font-weight: 600;
+}
+
+/* ---------- toggle pemasukan / pengeluaran ---------- */
+.iq-fin-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.iq-fin-toggle__opt {
+  position: relative;
+  cursor: pointer;
+}
+.iq-fin-toggle__opt input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.iq-fin-toggle__opt span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 12px 14px;
+  border: 1.5px solid #e2e6e3;
+  border-radius: 10px;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.87rem;
+  font-weight: 600;
+  color: #6b7a72;
+  background: #fbfcfb;
+  transition: all 0.2s ease;
+}
+.iq-fin-toggle__opt:hover span {
+  border-color: #cbd4cd;
+}
+.iq-fin-toggle__opt--in input:checked + span {
+  border-color: #16653f;
+  background: #e7f5ec;
+  color: #16653f;
+  box-shadow: 0 0 0 3px rgba(22, 101, 63, 0.1);
+}
+.iq-fin-toggle__opt--out input:checked + span {
+  border-color: #b91c1c;
+  background: #fdeaea;
+  color: #b91c1c;
+  box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.09);
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 1180px) {
+  .iq-fin-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 760px) {
+  .iq-fin-cards {
+    grid-template-columns: 1fr;
+  }
+  /* headstat disembunyikan di mobile — duplikat dengan kartu Saldo Keseluruhan */
+  .iq-fin-headstat {
+    display: none;
+  }
+  .iq-fin-toolbar {
+    gap: 8px;
+  }
+  .iq-fin-presets {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .iq-fin-chip {
+    flex: 1;
+    text-align: center;
+    padding: 7px 6px;
+  }
+  .iq-fin-dates {
+    width: 100%;
+  }
+  .iq-fin-dates input {
+    flex: 1;
+    min-width: 0;
+  }
+  .iq-fin-select {
+    flex: 1;
+  }
+  .iq-fin-actions {
+    margin-left: 0;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  /* CSV & PDF berbagi satu baris, Tambah Transaksi full width di bawah */
+  .iq-fin-actions .iq-btn {
+    flex: 1 1 calc(50% - 4px);
+    justify-content: center;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .iq-fin-actions .iq-btn--primary:last-child {
+    flex: 1 1 100%;
+  }
+}
+
+/* ---------- toolbar export: semua tombol identik ---------- */
+.iq-fin-actions .iq-btn {
+  box-shadow: 0 4px 14px -3px rgba(15, 81, 50, 0.4);
+}
+.iq-fin-actions .iq-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px -4px rgba(15, 81, 50, 0.5);
+}
+.iq-fin-actions .iq-btn:disabled {
+  opacity: 0.55;
+  transform: none;
+  box-shadow: none;
+}

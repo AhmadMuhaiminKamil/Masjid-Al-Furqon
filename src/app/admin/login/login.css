@@ -1,0 +1,153 @@
+/* ============================================================
+   LOGIN ADMIN — standalone (tanpa navbar/footer publik)
+   ============================================================ */
+.iq-login {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: #0b3d2c;
+  background-image:
+    radial-gradient(ellipse 70% 55% at 20% 15%, rgba(26, 127, 79, 0.42), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 85% 85%, rgba(201, 162, 39, 0.14), transparent 62%),
+    linear-gradient(160deg, #0f5132 0%, #0b3d2c 60%, #052016 100%);
+  overflow-y: auto;
+}
+
+.iq-login__inner {
+  width: 100%;
+  max-width: 420px;
+  margin: auto;
+}
+
+.iq-login__brand {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.iq-login__brand h1 {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.01em;
+  margin: 0 0 6px;
+  text-shadow: 0 3px 20px rgba(0, 0, 0, 0.4);
+}
+.iq-login__brand p {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+}
+
+.iq-login__card {
+  background: #fff;
+  border-radius: 22px;
+  padding: 38px 34px 34px;
+  box-shadow:
+    0 28px 70px -22px rgba(0, 0, 0, 0.55),
+    0 2px 8px rgba(0, 0, 0, 0.15);
+}
+.iq-login__card h2 {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0b3d2c;
+  margin: 0 0 26px;
+}
+
+/* form */
+.iq-login .iq-lform {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.iq-login .iq-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.iq-login .iq-field label {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #46524c;
+}
+.iq-login .iq-field input {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.94rem;
+  padding: 13px 16px;
+  border: 1px solid #e4e6e3;
+  border-radius: 11px;
+  background: #fbfcfb;
+  color: #1a1f1c;
+  outline: none;
+  width: 100%;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+.iq-login .iq-field input:focus {
+  border-color: #0f5132;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(15, 81, 50, 0.1);
+}
+
+.iq-login .iq-lform button[type="submit"] {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding: 15px 24px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #d4af37, #c9a227);
+  color: #14231a;
+  cursor: pointer;
+  box-shadow: 0 8px 26px -6px rgba(201, 162, 39, 0.55);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+  margin-top: 4px;
+}
+.iq-login .iq-lform button[type="submit"]:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px -8px rgba(201, 162, 39, 0.7);
+}
+.iq-login .iq-lform button[type="submit"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.iq-login .iq-error {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: #b91c1c;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+  padding: 11px 14px;
+}
+
+.iq-login__note {
+  text-align: center;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.74rem;
+  color: rgba(255, 255, 255, 0.42);
+  margin: 22px 0 0;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 480px) {
+  .iq-login__card {
+    padding: 30px 22px 26px;
+    border-radius: 18px;
+  }
+  .iq-login__brand h1 {
+    font-size: 1.6rem;
+  }
+}

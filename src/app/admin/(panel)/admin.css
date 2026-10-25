@@ -1,0 +1,598 @@
+/* ============================================================
+   ADMIN PANEL — shared styles (list, form, table, modal)
+   ============================================================ */
+
+/* ---------- page head ---------- */
+.iq-adm-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 26px;
+}
+.iq-adm-head h1 {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: 1.72rem;
+  font-weight: 700;
+  color: #0b3d2c;
+  margin: 0 0 5px;
+  letter-spacing: -0.01em;
+}
+.iq-adm-head p {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.87rem;
+  color: #6b7a72;
+  margin: 0;
+}
+
+/* ---------- buttons ---------- */
+.iq-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.855rem;
+  font-weight: 600;
+  padding: 11px 20px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.22s ease, box-shadow 0.22s ease,
+    transform 0.18s ease, border-color 0.22s ease, color 0.22s ease;
+  white-space: nowrap;
+}
+.iq-btn svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+.iq-btn--primary {
+  background: #0f5132;
+  color: #fff;
+  box-shadow: 0 4px 14px -3px rgba(15, 81, 50, 0.4);
+}
+.iq-btn--primary:hover {
+  background: #14663f;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px -4px rgba(15, 81, 50, 0.5);
+}
+.iq-btn--gold {
+  background: linear-gradient(135deg, #d4af37, #c9a227);
+  color: #14231a;
+  box-shadow: 0 4px 14px -3px rgba(201, 162, 39, 0.45);
+}
+.iq-btn--gold:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px -5px rgba(201, 162, 39, 0.6);
+}
+.iq-btn--ghost {
+  background: #fff;
+  border-color: #e2e6e3;
+  color: #46524c;
+}
+.iq-btn--ghost:hover {
+  background: #f6f8f6;
+  border-color: #cbd4cd;
+}
+.iq-btn--danger {
+  background: #fff;
+  border-color: #f3c9c9;
+  color: #b91c1c;
+}
+.iq-btn--danger:hover {
+  background: #fef2f2;
+  border-color: #e9a5a5;
+}
+.iq-btn--sm {
+  padding: 7px 12px;
+  font-size: 0.79rem;
+  border-radius: 8px;
+}
+.iq-btn--icon {
+  padding: 8px;
+  border-radius: 8px;
+}
+.iq-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* ---------- toolbar ---------- */
+.iq-adm-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+.iq-adm-search {
+  position: relative;
+  flex: 1;
+  min-width: 200px;
+  max-width: 340px;
+}
+.iq-adm-search svg {
+  position: absolute;
+  left: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: #9aa8a0;
+  pointer-events: none;
+}
+.iq-adm-search input {
+  width: 100%;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.87rem;
+  padding: 10px 14px 10px 38px;
+  border: 1px solid #e2e6e3;
+  border-radius: 9px;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.22s ease, box-shadow 0.22s ease;
+}
+.iq-adm-search input:focus {
+  border-color: #0f5132;
+  box-shadow: 0 0 0 3px rgba(15, 81, 50, 0.09);
+}
+
+/* ---------- card / table ---------- */
+.iq-adm-card {
+  background: #fff;
+  border: 1px solid #e8ece9;
+  border-radius: 14px;
+  box-shadow: 0 1px 3px rgba(16, 40, 30, 0.05);
+  overflow: hidden;
+}
+.iq-adm-tablewrap {
+  overflow-x: auto;
+}
+.iq-adm-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+.iq-adm-table th {
+  text-align: left;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #7b8a82;
+  padding: 13px 18px;
+  background: #f8faf8;
+  border-bottom: 1px solid #e8ece9;
+  white-space: nowrap;
+}
+.iq-adm-table td {
+  padding: 14px 18px;
+  font-size: 0.875rem;
+  color: #2c3833;
+  border-bottom: 1px solid #f0f3f1;
+  vertical-align: middle;
+}
+.iq-adm-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+.iq-adm-table tbody tr {
+  transition: background 0.16s ease;
+}
+.iq-adm-table tbody tr:hover {
+  background: #fafcfa;
+}
+.iq-adm-table td.iq-td-actions {
+  text-align: right;
+  white-space: nowrap;
+}
+.iq-adm-table td.iq-td-actions > * {
+  margin-left: 6px;
+}
+
+.iq-adm-thumb {
+  width: 52px;
+  height: 52px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #eef2ef;
+  display: block;
+  border: 1px solid #e4e9e5;
+}
+
+.iq-adm-celltitle {
+  font-weight: 600;
+  color: #16231c;
+  margin-bottom: 2px;
+}
+.iq-adm-cellsub {
+  font-size: 0.79rem;
+  color: #8a978f;
+}
+
+/* ---------- badge ---------- */
+.iq-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.iq-badge--green {
+  background: #e7f5ec;
+  color: #16653f;
+}
+.iq-badge--gray {
+  background: #f0f2f1;
+  color: #6b7a72;
+}
+.iq-badge--gold {
+  background: #fdf5e0;
+  color: #8a6d11;
+}
+.iq-badge--blue {
+  background: #e8f1fd;
+  color: #1d4f91;
+}
+.iq-badge--red {
+  background: #fdeaea;
+  color: #b91c1c;
+}
+
+/* ---------- empty state ---------- */
+.iq-adm-empty {
+  text-align: center;
+  padding: 62px 24px;
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+.iq-adm-empty__ico {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 16px;
+  display: grid;
+  place-items: center;
+  background: #f2f6f3;
+  border-radius: 16px;
+  color: #8ba598;
+}
+.iq-adm-empty__ico svg {
+  width: 26px;
+  height: 26px;
+}
+.iq-adm-empty h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2c3833;
+  margin: 0 0 6px;
+}
+.iq-adm-empty p {
+  font-size: 0.86rem;
+  color: #8a978f;
+  margin: 0 0 20px;
+}
+
+/* ---------- form ---------- */
+.iq-adm-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.iq-adm-grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.iq-adm-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.iq-adm-field label {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #46524c;
+}
+.iq-adm-field label .req {
+  color: #b91c1c;
+  margin-left: 2px;
+}
+.iq-adm-field input[type="text"],
+.iq-adm-field input[type="email"],
+.iq-adm-field input[type="number"],
+.iq-adm-field input[type="date"],
+.iq-adm-field input[type="time"],
+.iq-adm-field input[type="url"],
+.iq-adm-field textarea,
+.iq-adm-field select {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.9rem;
+  padding: 11px 14px;
+  border: 1px solid #e2e6e3;
+  border-radius: 9px;
+  background: #fff;
+  color: #1a1f1c;
+  outline: none;
+  width: 100%;
+  transition: border-color 0.22s ease, box-shadow 0.22s ease;
+}
+.iq-adm-field textarea {
+  resize: vertical;
+  min-height: 110px;
+  line-height: 1.6;
+}
+.iq-adm-field input:focus,
+.iq-adm-field textarea:focus,
+.iq-adm-field select:focus {
+  border-color: #0f5132;
+  box-shadow: 0 0 0 3px rgba(15, 81, 50, 0.09);
+}
+.iq-adm-field .hint {
+  font-size: 0.76rem;
+  color: #8a978f;
+  line-height: 1.45;
+}
+
+.iq-adm-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.87rem;
+  color: #2c3833;
+  cursor: pointer;
+  user-select: none;
+}
+.iq-adm-check input {
+  width: 17px;
+  height: 17px;
+  accent-color: #0f5132;
+  cursor: pointer;
+}
+
+.iq-adm-formfoot {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 20px;
+  border-top: 1px solid #eef2ef;
+  margin-top: 4px;
+}
+
+.iq-adm-savebar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 18px;
+  border-radius: 10px;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.86rem;
+  margin-bottom: 18px;
+}
+.iq-adm-savebar--ok {
+  background: #e7f5ec;
+  color: #16653f;
+  border: 1px solid #c6e6d3;
+}
+.iq-adm-savebar--err {
+  background: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+
+/* ---------- modal ---------- */
+.iq-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(8, 24, 17, 0.55);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  overflow-y: auto;
+}
+.iq-modal__box {
+  width: 100%;
+  max-width: 620px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 30px 70px -18px rgba(0, 0, 0, 0.5);
+  margin: auto;
+  overflow: hidden;
+}
+.iq-modal__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  border-bottom: 1px solid #eef2ef;
+}
+.iq-modal__head h2 {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #0b3d2c;
+  margin: 0;
+}
+.iq-modal__close {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  background: #f4f6f4;
+  border: 0;
+  border-radius: 9px;
+  color: #6b7a72;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.iq-modal__close:hover {
+  background: #e8ece9;
+  color: #2c3833;
+}
+.iq-modal__body {
+  padding: 24px;
+  max-height: min(68vh, 620px);
+  overflow-y: auto;
+}
+.iq-modal__foot {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 16px 24px;
+  border-top: 1px solid #eef2ef;
+  background: #fafcfa;
+}
+
+/* ---------- image upload ---------- */
+.iq-upload {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.iq-upload__preview {
+  width: 96px;
+  height: 96px;
+  border-radius: 11px;
+  border: 1.5px dashed #cfd8d2;
+  background: #f8faf8 center/cover no-repeat;
+  display: grid;
+  place-items: center;
+  color: #9aa8a0;
+  flex: none;
+  overflow: hidden;
+}
+.iq-upload__preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.iq-upload__preview svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* ---------- jadwal sholat: kartu grid ---------- */
+.iq-prayer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 16px;
+}
+.iq-prayer-card {
+  background: #fff;
+  border: 1px solid #e8ece9;
+  border-radius: 14px;
+  box-shadow: 0 1px 3px rgba(16, 40, 30, 0.05);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.iq-prayer-card__head {
+  padding: 16px 18px 14px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.iq-prayer-card__dot {
+  width: 26px;
+  height: 3px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+  display: block;
+}
+.iq-prayer-card__head h3 {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
+}
+.iq-prayer-card__meta {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.74rem;
+  color: #6b7a72;
+  letter-spacing: 0.02em;
+}
+.iq-prayer-card__body {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+.iq-prayer-card__msg {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin: 0;
+}
+.iq-spin {
+  animation: iq-spin 0.8s linear infinite;
+}
+@keyframes iq-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 760px) {
+  /* tabel bisa digeser horizontal, dengan hint visual */
+  .iq-adm-tablewrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+  .iq-adm-tablewrap::-webkit-scrollbar {
+    height: 6px;
+  }
+  .iq-adm-tablewrap::-webkit-scrollbar-thumb {
+    background: #cfd8d2;
+    border-radius: 3px;
+  }
+  .iq-adm-table {
+    min-width: 620px;
+  }
+
+  .iq-adm-grid2 {
+    grid-template-columns: 1fr;
+  }
+  .iq-prayer-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+  .iq-adm-head h1 {
+    font-size: 1.4rem;
+  }
+  .iq-adm-table th,
+  .iq-adm-table td {
+    padding: 12px 14px;
+  }
+  .iq-adm-search {
+    max-width: none;
+  }
+  .iq-modal__box {
+    border-radius: 14px;
+  }
+  .iq-modal__body {
+    padding: 18px;
+  }
+}

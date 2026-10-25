@@ -1,0 +1,109 @@
+/* ============================================================
+   LOADING — skeleton tipis saat pindah halaman
+   Tampil sekejap saat server render, memberi feedback instan
+   ============================================================ */
+
+.iq-route-loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2.5px;
+  z-index: 99999;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #c9a227 25%,
+    #e8c95a 50%,
+    #c9a227 75%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: iqRouteLoad 0.9s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes iqRouteLoad {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+/* skeleton konten */
+.iq-skel {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 120px 24px 80px;
+}
+.iq-skel__bar {
+  height: 13px;
+  border-radius: 6px;
+  background: linear-gradient(
+    90deg,
+    rgba(15, 81, 50, 0.06) 0%,
+    rgba(15, 81, 50, 0.12) 50%,
+    rgba(15, 81, 50, 0.06) 100%
+  );
+  background-size: 200% 100%;
+  animation: iqSkel 1.3s ease-in-out infinite;
+  margin-bottom: 12px;
+}
+.iq-skel__bar--sm {
+  width: 22%;
+  height: 9px;
+}
+.iq-skel__bar--lg {
+  width: 62%;
+  height: 30px;
+  margin-bottom: 18px;
+}
+.iq-skel__bar--md {
+  width: 84%;
+}
+.iq-skel__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+  margin-top: 40px;
+}
+.iq-skel__card {
+  height: 190px;
+  border-radius: 14px;
+  background: linear-gradient(
+    90deg,
+    rgba(15, 81, 50, 0.05) 0%,
+    rgba(15, 81, 50, 0.1) 50%,
+    rgba(15, 81, 50, 0.05) 100%
+  );
+  background-size: 200% 100%;
+  animation: iqSkel 1.3s ease-in-out infinite;
+}
+
+@keyframes iqSkel {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .iq-skel {
+    padding: 100px 18px 60px;
+  }
+  .iq-skel__bar--lg {
+    width: 80%;
+    height: 22px;
+  }
+  .iq-skel__grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .iq-skel__card {
+    height: 160px;
+  }
+}

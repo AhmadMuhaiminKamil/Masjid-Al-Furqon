@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --emerald: #0b3d2c;
+    --emerald-mid: #0f5132;
+    --emerald-lite: #1a7f4f;
+    --gold: #c9a227;
+    --gold-lite: #d4af37;
+    --cream: #f7f4ec;
+    --ink: #1a1f1c;
+    --muted: #6b746f;
+    --line: #e4e6e3;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-ink font-sans antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .container-iq {
+    @apply mx-auto w-full max-w-[1240px] px-8;
+  }
+
+  .btn-gold {
+    @apply inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-gold-light to-gold px-8 py-4 text-sm font-semibold text-ink shadow-lg transition-all hover:-translate-y-0.5 hover:shadow-xl;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/5 px-8 py-4 text-sm font-semibold text-white backdrop-blur transition-all hover:bg-white/15;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 rounded-full border border-emerald-600/30 px-8 py-4 text-sm font-semibold text-emerald-600 transition-all hover:bg-emerald-600 hover:text-white;
+  }
+
+  .eyebrow {
+    @apply flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.22em] text-gold;
+  }
+
+  .eyebrow-line {
+    @apply inline-block h-px w-11 bg-gold;
+  }
+
+  .section-title {
+    @apply font-serif text-3xl font-extrabold leading-tight tracking-tight text-emerald-700 md:text-4xl;
+  }
+
+  .card-iq {
+    @apply rounded-2xl border border-[#e4e6e3] bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
+  }
+
+  .input-iq {
+    @apply w-full rounded-xl border border-[#e4e6e3] bg-white px-4 py-3 text-sm outline-none transition focus:border-emerald-600 focus:ring-2 focus:ring-emerald-600/10;
+  }
+
+  .label-iq {
+    @apply mb-2 block text-xs font-semibold uppercase tracking-wider text-[#46524c];
+  }
+}
+
+.prose-iq {
+  @apply text-[15px] leading-relaxed text-[#5b6762];
+}
+.prose-iq h2 {
+  @apply mt-8 mb-3 font-serif text-2xl font-bold text-emerald-700;
+}
+.prose-iq h3 {
+  @apply mt-6 mb-2 text-lg font-semibold text-emerald-600;
+}
+.prose-iq p {
+  @apply mb-4;
+}
+.prose-iq ul {
+  @apply mb-4 list-disc pl-6;
+}
+.prose-iq ol {
+  @apply mb-4 list-decimal pl-6;
+}
+.prose-iq li {
+  @apply mb-1.5;
+}
+.prose-iq a {
+  @apply text-emerald-600 underline hover:text-gold;
+}
+.prose-iq img {
+  @apply my-6 rounded-xl;
+}
+.prose-iq blockquote {
+  @apply my-6 border-l-4 border-gold pl-4 italic text-muted;
+}

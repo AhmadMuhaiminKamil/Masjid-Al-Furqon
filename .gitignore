@@ -1,0 +1,46 @@
+# ---------- dependencies ----------
+node_modules/
+.pnp
+.pnp.js
+.yarn/
+
+# ---------- next.js ----------
+.next
+out/
+build/
+dist/
+next-env.d.ts
+*.tsbuildinfo
+
+# ---------- env & secrets ----------
+.env
+.env.*
+!.env.example
+.sb-token
+.sb-dbpass
+*.pem
+
+# ---------- vercel ----------
+.vercel
+
+# ---------- drizzle ----------
+drizzle/meta
+
+# ---------- logs ----------
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+logs/
+
+# ---------- misc ----------
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+coverage/
+tmp/
+temp/
