@@ -1,7 +1,7 @@
-# 🕌 Masjid Al-Furqon — Website & Admin Panel
+# Masjid Al-Furqon
 
-Website resmi Masjid Al-Furqon (Padang) dengan panel admin untuk mengelola konten
-tanpa menyentuh kode.
+Website resmi Masjid Al-Furqon (Padang) beserta panel admin untuk mengelola
+konten tanpa menyentuh kode.
 
 ## Stack
 
@@ -9,14 +9,14 @@ tanpa menyentuh kode.
 |---|---|
 | Framework | Next.js 15 (App Router) |
 | Bahasa | TypeScript |
-| Styling | Pure CSS (custom) + Tailwind (admin) |
-| Database | Supabase Postgres 17 |
+| Styling | Pure CSS (publik) + Tailwind (admin) |
+| Database | Supabase Postgres |
 | ORM | Drizzle ORM |
-| Auth | JWT (httpOnly cookie) + middleware |
+| Auth | JWT httpOnly cookie + middleware |
 | Storage | Supabase Storage |
 | Export | jsPDF + jsPDF-AutoTable |
 
-## Halaman Publik (7)
+## Halaman Publik
 
 | Route | Isi |
 |---|---|
@@ -28,7 +28,7 @@ tanpa menyentuh kode.
 | `/kontak` | Kontak, alamat, form pesan |
 | `/donasi` | Rekening donasi |
 
-## Admin Panel (9 modul)
+## Admin Panel
 
 | Route | Fungsi |
 |---|---|
@@ -55,34 +55,38 @@ cp .env.example .env.local
 # 3. Push schema ke database
 npm run db:push
 
-# 4. Isi data awal (admin user + konten contoh)
-npm run db:seed
+# 4. Isi data awal (akun admin + konten contoh)
+#    password admin WAJIB diset sendiri, minimal 8 karakter
+SEED_ADMIN_PASSWORD='passwordku' npm run db:seed
 
-# 5. Jalan
+# 5. Jalankan
 npm run dev
 ```
 
 Buka http://localhost:3000
 
-## Login Admin
+## Akun Admin
 
-```
-URL      : /admin/login
-Email    : admin@masjidalfurqon.id
-Password : Admin123!
+Dibuat saat menjalankan `npm run db:seed`, dengan password yang wajib
+lu tentukan sendiri lewat environment variable (tidak ada password default):
+
+```bash
+SEED_ADMIN_EMAIL='admin@masjidalfurqon.id' SEED_ADMIN_PASSWORD='passwordku' npm run db:seed
 ```
 
-⚠️ **Ganti password setelah login pertama.**
+Email dan nama juga bisa diatur lewat `SEED_ADMIN_EMAIL` / `SEED_ADMIN_NAME`.
+
+Segera ganti password setelah login pertama.
 
 ## Struktur Project
 
 ```
 src/
 ├── app/
-│   ├── (publik)/          beranda, profil, jadwal, kegiatan, galeri, kontak, donasi
+│   ├── publik/            beranda, profil, jadwal, kegiatan, galeri, kontak, donasi
 │   └── admin/
 │       ├── login/         halaman login (standalone)
-│       └── (panel)/       9 modul admin + sidebar
+│       └── (panel)/       modul admin + sidebar
 ├── components/            Navbar, Footer, ImageUpload
 ├── db/                    schema, seed, koneksi
 ├── lib/                   auth, queries (cached), upload
@@ -102,12 +106,12 @@ src/
 
 ## Deploy
 
-Lihat **[DEPLOY.md](./DEPLOY.md)** untuk panduan lengkap deploy ke Vercel.
+Lihat `DEPLOY.md` untuk panduan deploy ke Vercel.
 
 ## Catatan Teknis
 
-- **Halaman publik** pakai ISR (`revalidate = 300`) — data di-cache 5 menit
-- **Admin** kirim `revalidateTag()` setiap simpan, jadi publik langsung update
-- **Upload gambar** langsung ke Supabase Storage via server action (file tidak lewat client)
-- **Export PDF/CSV** dibuat di browser, tidak membebani server
-- **Jadwal sholat** tampil di beranda saja (tidak ada menu admin, sesuai permintaan)
+- Halaman publik pakai ISR (`revalidate = 300`) — data di-cache 5 menit
+- Admin mengirim `revalidateTag()` setiap simpan, jadi publik langsung update
+- Upload gambar langsung ke Supabase Storage via server action
+- Export PDF/CSV dibuat di browser, tidak membebani server
+- Jadwal sholat tampil di beranda saja

@@ -20,7 +20,14 @@ async function seed() {
 
   /* ---------- ADMIN ---------- */
   const email = process.env.SEED_ADMIN_EMAIL || "admin@masjidalfurqon.id";
-  const password = process.env.SEED_ADMIN_PASSWORD || "Admin123!";
+  const password = process.env.SEED_ADMIN_PASSWORD;
+
+  if (!password || password.length < 8) {
+    console.error("❌ SEED_ADMIN_PASSWORD belum diset (minimal 8 karakter).");
+    console.error("   Jalankan: SEED_ADMIN_PASSWORD='passwordku' npm run db:seed");
+    process.exit(1);
+  }
+
   const name = process.env.SEED_ADMIN_NAME || "Administrator";
 
   const hash = await bcrypt.hash(password, 10);

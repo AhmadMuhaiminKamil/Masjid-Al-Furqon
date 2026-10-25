@@ -61,10 +61,10 @@ Buka `C:\laragon\www\masjid-next\.env.local` dengan text editor, lalu copy nilai
 
 | Key | Nilai | Catatan |
 |---|---|---|
-| `DATABASE_URL` | `postgresql://postgres.wqcbilrhadjjjtmyqbgk:PASSWORD@aws-0-ap-northeast-1.pooler.supabase.com:6543/postgres` | **Harus port 6543** (pooler) |
+| `DATABASE_URL` | `postgresql://postgres.PROJECT_REF:PASSWORD@aws-0-REGION.pooler.supabase.com:6543/postgres` | **Harus port 6543** (pooler) |
 | `DIRECT_URL` | sama tapi port `5432` | Untuk migration |
 | `JWT_SECRET` | (dari `.env.local`) | String acak 48 char |
-| `NEXT_PUBLIC_SUPABASE_URL` | `https://wqcbilrhadjjjtmyqbgk.supabase.co` | |
+| `NEXT_PUBLIC_SUPABASE_URL` | `https://PROJECT_REF.supabase.co` | |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | (dari `.env.local`) | Panjang, mulai `eyJ` |
 | `SUPABASE_SERVICE_ROLE_KEY` | (dari `.env.local`) | **Rahasia** |
 | `SUPABASE_STORAGE_BUCKET` | `masjid-images` | |
@@ -105,7 +105,7 @@ Setelah tau URL final:
 |---|---|
 | Beranda tampil | Buka URL Vercel |
 | 7 halaman publik | Klik semua menu navbar |
-| Login admin | `/admin/login` — `admin@masjidalfurqon.id` / `Admin123!` |
+| Login admin | `/admin/login` — pakai akun yang dibuat saat `npm run db:seed` |
 | Data muncul | Dashboard harus tampil 6 berita, 6 galeri, dll |
 | Upload foto | Admin → Galeri → Tambah Foto |
 | Export PDF/CSV | Admin → Laporan Keuangan |
